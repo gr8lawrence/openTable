@@ -1,6 +1,7 @@
 ---
-title: "`r Sys.Date()`"
+title: "Introduction to openTable"
 author: "James Xenakis, Tianyi Liu"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{openTable_vignette}
