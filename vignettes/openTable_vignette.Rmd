@@ -29,7 +29,7 @@ I have written some functions to facilitate the creation of publication quality 
 
 Often in collaborative projects, labor has been divided such that subsets of a report's final set of tables are created by different parties. In my experience, each group spends time formatting their own tables. In the end, when they are compiled, someone has to harmonize the formatting, so all the time the individuals spent formatting is more or less wasted. Now, multiply that wasted time across multiple drafts. Wasted time to the $n^{th}$ power. More generally, formatting tables in Miscrosoft Word is a total waste of time because that software is essentially malware. We should strive to minimize the time we spend in Word, Excel, etc.
 
-![](./makeTables-1.jpg)
+![Example Table I Try to Produce](./makeTables-1.jpg){#id .class width=80% height=80%}
 
 2. To create an interface to the R package `gt()` 
 
