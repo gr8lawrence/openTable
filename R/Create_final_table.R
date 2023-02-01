@@ -1,3 +1,5 @@
+#' Converting a Table into a Data Frame
+
 X_tableToDf <- function(x){
   #x <- table(transitions)
   #names.tmp <- names(x)
@@ -6,10 +8,20 @@ X_tableToDf <- function(x){
   rownames(df.tmp) <- NULL
   colnames(df.tmp) <- names.tmp
   return(df.tmp)
-  
+
 }
 
-#this takes a table a title, a subtitle, and a stud text and puts it into the format required by X_create_final_table
+#' Preparing The Data Table for Making The Final Summary Table
+#'
+#' This function takes a table, a title, a subtitle, and a stud text, and puts it into the format required by X_create_final_table.
+#'
+#' @param x a table.
+#' @param title.txt the table title (a character string).
+#' @param subtitle.txt the table subtitle (a character string).
+#' @param stud.txt a stud text (a character string).
+#'
+#' @export
+
 X_prep_final_table <- function(x, title.txt, subtitle.txt, stub.txt){
 #x <- table1.pre
 #title.txt <- "Strain by Doe"
@@ -27,10 +39,10 @@ X_prep_final_table <- function(x, title.txt, subtitle.txt, stub.txt){
   final.table[3,] <- stubheader.blank
   final.table[4,] <- row.1
   final.table[5:nrow(final.table),2:ncol(final.table)] <- x
- 
+
   #this is new:
   final.table[5:nrow(final.table),1] <- rownames(x)
-  
+
   return(final.table)
 }
 
@@ -42,10 +54,19 @@ X_prep_final_table <- function(x, title.txt, subtitle.txt, stub.txt){
 #file.txt <- "test.xlsx"
 #dat.raw <- as.data.frame(readxl::read_xlsx(paste0(dat.dir, file.txt), sheet=1, col_names=TRUE))
 
+#' Function to Create the Final Summary Table
+#'
+#' @param x the table object.
+#' @param sink.dir (what is this directory?)
+#' @param table.dir the path to the directory that stores the produced table.
+#' @param table.name the name of the table (a character string).
+#'
+#' @import gt
+#' @export
 
 X_create_final_table <- function(x, sink.dir, table.dir, table.name){
-  require(gt)
-  
+  # require(gt)
+
   #x=dat.raw
   #x=table1.pre
   #table.dir <- dat.dir
@@ -58,16 +79,16 @@ X_create_final_table <- function(x, sink.dir, table.dir, table.name){
   #table.name <- "xx"
   #x=final.table
   #table.dir=dat.dir
-  #table.name="test" 
+  #table.name="test"
   #x=tmp.table2.2
   #table.dir=dat.dir
-  #table.name="inbredVsG0Summary" 
-  
-  
+  #table.name="inbredVsG0Summary"
+
+
   dat.raw <- x
 
   #print("1")
-  
+
   #extract title, subtitle and stubheader
   title <- trimws(gsub("TITLE:", "", dat.raw[1,1]))
   #print(title)
@@ -137,7 +158,7 @@ for (j in 1:length(unique.row.group)){
   spanned.row.ind <- append(spanned.row.ind, list(current.feature))
 }
 
-#So I will want to span rows 8 and 9 with the 8th 
+#So I will want to span rows 8 and 9 with the 8th
 row.spanned.ind <- which(unlist(lapply(spanned.row.ind, FUN=length))>1)
 
   #print("6")
@@ -173,7 +194,7 @@ final.dat <- actual.dat
 if(!is.na(unique.row.group)){
 colnames(final.dat) <- c("row_labels",lowest.level.col.names)
 } else {
-#colnames(final.dat) <- c("row_labels", "Column1","Col2a","Col2b","Column3")       
+#colnames(final.dat) <- c("row_labels", "Column1","Col2a","Col2b","Column3")
 colnames(final.dat) <- lowest.level.col.names
 }
 
