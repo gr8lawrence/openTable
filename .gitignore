@@ -42,3 +42,5 @@ vignettes/*.pdf
 .Renviron
 >>>>>>> be9dafb492433f5b51f328c52a223a23f527e0aa
 inst/doc
+/doc/
+/Meta/
