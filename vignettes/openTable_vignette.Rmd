@@ -75,3 +75,30 @@ colnames(samples.dat) <-
 
 print(samples.dat)
 ```
+
+Before we apply the function `X_create_final_table()`, we can add a title, subtitle, and stub header to the `samples.dat` object. I call this the samples.pre object. The reason for this step is that objects of this type are a complete interface that a collaborator can create in Excel. 
+
+```{r chunk4}
+samples.pre <-
+  X_prep_final_table(
+    samples.dat,
+    title.txt = "Strain by Dose",
+    subtitle.txt = "",
+    stub.txt = ""
+  )
+```
+
+Now, we run the `X_create_final_table()` function on the samples.pre object. It writes the code to create the table and places it in the sink.dir directory. Then we source the `sinkcode.R` code to actually create the table, which is placed in the `table.dir` directory.
+
+```{r chunk5, eval = FALSE}
+## not run yet bc I can't find sinkcode.R
+final.dat <-
+  X_create_final_table(
+    x = samples.pre,
+    sink.dir = sink.dir,
+    table.dir = table.dir,
+    table.name = "testTable"
+  )
+source(paste0(sink.dir, "sinkcode.R"))
+```
+
